@@ -35,9 +35,22 @@ people.push(
   {id:'oakland', name:'John S. Oakland', years:'1943-', country:'Reino Unido', stream:'Total', tag:'TQM operativo', philosophy:'La calidad total debe convertirse en una forma de administrar procesos, equipos y objetivos, usando medicion y mejora continua.', contributions:['Modelo de administracion de calidad total.','Integracion de calidad, excelencia y desempeno.','Difusion de herramientas de TQM en organizaciones.'], recognition:'Sus textos y modelos son referentes de formacion profesional en gestion de la calidad y excelencia operacional.', refs:[13,14], tool:'TQM / gestion por procesos', use:'Sistemas integrados de calidad y desempeno', year:1989}
 );
 
+const essentialIds = new Set(['deming','juran','crosby','ishikawa','feigenbaum','taguchi','shewhart','shingo','imai','ohno','akao','goldratt','pareto','taylor','ford','dodge','sakichi','kiichiro','kano','shainin']);
+people.splice(0, people.length, ...people.filter(person => essentialIds.has(person.id)));
+
 let activeId = 'deming';
 let activeFilter = 'Todos';
 const portraits = {};
+const directPortraits = {
+  crosby:'https://history-biography.com/wp-content/uploads/2018/02/Phil-Crosby.jpg',
+  ishikawa:'https://kkbooks.com/wp-content/uploads/2024/07/Dr.-Kaoru-Ishikawa.png',
+  feigenbaum:'https://nationalmedals.org/wp-content/uploads/2020/07/Armand-V-Feigenbaum-1.jpg',
+  shingo:'https://www.toolshero.com/wp-content/uploads/2018/07/shigeo-shingo-toolshero.jpg',
+  ohno:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ohno-Taiichi-1.jpg/1090px-Ohno-Taiichi-1.jpg',
+  akao:'https://pic1.zhimg.com/80/v2-85f9c4d9f5b60fca6c52b4f530c5dcda_720w.webp?source=d16d100b',
+  goldratt:'https://www.profiteditorial.com/wp-content/uploads/2024/07/Eliyahu_M_Goldratt-scaled.jpg',
+  dodge:'https://asq.org/-/media/Images/About-ASQ/wcqi/Bios/dodge.gif'
+};
 const wikipediaTitles = {
   deming:'W. Edwards Deming', juran:'Joseph M. Juran', crosby:'Philip B. Crosby', ishikawa:'Kaoru Ishikawa',
   feigenbaum:'Armand V. Feigenbaum', taguchi:'Genichi Taguchi', shewhart:'Walter A. Shewhart', shingo:'Shigeo Shingo',
@@ -51,13 +64,13 @@ function initials(name) {
 }
 
 function portrait(person) {
-  const image = portraits[person.id];
-  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy">`;
+  const image = directPortraits[person.id] || portraits[person.id];
+  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy" referrerpolicy="no-referrer">`;
   return `<span class="portrait-fallback" aria-label="Retrato no disponible">${initials(person.name)}</span>`;
 }
 
 async function loadPortraits() {
-  const titles = Object.values(wikipediaTitles).join('|');
+  const titles = people.map(person => wikipediaTitles[person.id]).filter(Boolean).join('|');
   try {
     const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=480&titles=${encodeURIComponent(titles)}`);
     const data = await response.json();
