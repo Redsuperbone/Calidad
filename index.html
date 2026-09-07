@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Precursores de la calidad: filosofias, aportaciones, reconocimientos y bibliografia para Ingenieria Industrial.">
+  <title>Precursores de la calidad | Ingenieria Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">Q<span>/</span>LAB</a>
+    <nav aria-label="Navegacion principal">
+      <a href="#precursores">Precursores</a>
+      <a href="#comparador">Comparador</a>
+      <a href="#bibliografia">Bibliografia</a>
+    </nav>
+    <button class="print-button" type="button" id="printPage">Imprimir</button>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="titulo-principal">
+      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=85" alt="Trabajadora revisando un proceso de manufactura industrial">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow light">Ingenieria industrial / historia de la calidad</p>
+        <h1 id="titulo-principal">Precursores<br>de la calidad</h1>
+        <p class="hero-copy">Trece pensadores que cambiaron la forma de diseñar, medir y mejorar los sistemas productivos.</p>
+        <a class="hero-link" href="#precursores">Explorar autores <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-note">Material de consulta academica<br>Actualizado: septiembre de 2026</div>
+    </section>
+
+    <section class="intro section-wrap" aria-labelledby="enfoque-title">
+      <div>
+        <p class="eyebrow">Como leer esta guia</p>
+        <h2 id="enfoque-title">La calidad dejo de ser inspeccion final para convertirse en una forma de dirigir.</h2>
+      </div>
+      <p>Las fichas conectan cada filosofia con herramientas que siguen vigentes en planta, servicios y cadenas de suministro. Los reconocimientos se formulan con prudencia: se distinguen premios personales de homenajes o legados institucionales.</p>
+    </section>
+
+    <section class="stats section-wrap" aria-label="Resumen del contenido">
+      <div><strong>13</strong><span>precursores</span></div>
+      <div><strong>4</strong><span>corrientes principales</span></div>
+      <div><strong>1920-1990</strong><span>periodo de mayor influencia</span></div>
+      <div><strong>15</strong><span>referencias para citar</span></div>
+    </section>
+
+    <section class="directory section-wrap" id="precursores" aria-labelledby="directorio-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Directorio interactivo</p>
+          <h2 id="directorio-title">Autores y aportaciones</h2>
+        </div>
+        <p id="resultCount" aria-live="polite"></p>
+      </div>
+      <div class="toolbar">
+        <label class="search-label" for="search">Buscar autor, concepto o herramienta</label>
+        <input id="search" type="search" placeholder="Ej. control estadistico, Kaizen, QFD">
+        <div class="filter-group" role="group" aria-label="Filtrar por corriente">
+          <button class="filter active" type="button" data-filter="Todos" aria-pressed="true">Todos</button>
+          <button class="filter" type="button" data-filter="Estadistica" aria-pressed="false">Estadistica</button>
+          <button class="filter" type="button" data-filter="Total" aria-pressed="false">Calidad total</button>
+          <button class="filter" type="button" data-filter="Lean" aria-pressed="false">Lean</button>
+          <button class="filter" type="button" data-filter="Estrategia" aria-pressed="false">Estrategia</button>
+        </div>
+      </div>
+      <div class="directory-layout">
+        <div class="people-list" id="peopleList" aria-label="Lista de precursores"></div>
+        <article class="profile" id="profile" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <section class="timeline-band" aria-labelledby="timeline-title">
+      <div class="section-wrap">
+        <p class="eyebrow light">Linea de tiempo</p>
+        <h2 id="timeline-title">Del control de variacion a la mejora continua</h2>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="comparison section-wrap" id="comparador" aria-labelledby="comparison-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Sintesis para estudio</p>
+          <h2 id="comparison-title">Matriz de comparacion</h2>
+        </div>
+        <p>Una lectura rapida para relacionar filosofia, herramienta y uso industrial.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Precursor</th><th>Idea central</th><th>Herramienta o concepto</th><th>Aplicacion industrial</th></tr></thead>
+          <tbody id="comparisonTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="takeaway section-wrap" aria-labelledby="takeaway-title">
+      <p class="eyebrow">Lectura integradora</p>
+      <h2 id="takeaway-title">Cuatro preguntas que ordenan la disciplina</h2>
+      <div class="question-grid">
+        <article><span>01</span><h3>Que esta variando?</h3><p>Shewhart, Deming y Taguchi convierten los datos del proceso en decisiones.</p></article>
+        <article><span>02</span><h3>Que valora el cliente?</h3><p>Juran, Crosby, Feigenbaum e Ishikawa sitúan la calidad en toda la organizacion.</p></article>
+        <article><span>03</span><h3>Donde se desperdicia?</h3><p>Ohno, Shingo e Imai hacen visible el flujo, el error y la mejora cotidiana.</p></article>
+        <article><span>04</span><h3>Que restringe el resultado?</h3><p>Pareto, Akao y Goldratt ayudan a priorizar necesidades, causas y cuellos de botella.</p></article>
+      </div>
+    </section>
+
+    <section class="bibliography section-wrap" id="bibliografia" aria-labelledby="bibliography-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Para sustentar el trabajo</p>
+          <h2 id="bibliography-title">Bibliografia y fuentes</h2>
+        </div>
+        <p>Se priorizan ediciones en espanol. Las fuentes institucionales complementan datos biograficos y reconocimientos.</p>
+      </div>
+      <div class="sources-grid">
+        <ol class="bibliography-list">
+          <li id="ref-1">Deming, W. E. (1989). <em>Calidad, productividad y competitividad: la salida de la crisis</em>. Diaz de Santos.</li>
+          <li id="ref-2">Juran, J. M. (1990). <em>Juran y la planificacion para la calidad</em>. Diaz de Santos.</li>
+          <li id="ref-3">Crosby, P. B. (1987). <em>La calidad no cuesta: el arte de cerciorarse de la calidad</em>. CECSA.</li>
+          <li id="ref-4">Ishikawa, K. (1994). <em>Que es el control total de la calidad? La modalidad japonesa</em>. Norma.</li>
+          <li id="ref-5">Feigenbaum, A. V. (1994). <em>Control total de la calidad</em>. CECSA.</li>
+          <li id="ref-6">Taguchi, G., Elsayed, E. A. y Hsiang, T. (1990). <em>Ingenieria de calidad: sistemas de produccion</em>. McGraw-Hill.</li>
+          <li id="ref-7">Shewhart, W. A. (1939). <em>Metodo estadistico desde el punto de vista del control de calidad</em>. Diaz de Santos, edicion en espanol.</li>
+          <li id="ref-8">Shingo, S. (1990). <em>El sistema de produccion Toyota desde el punto de vista de la ingenieria</em>. Tecnologias de Gerencia y Produccion.</li>
+          <li id="ref-9">Imai, M. (1998). <em>Kaizen: la clave de la ventaja competitiva japonesa</em>. CECSA.</li>
+          <li id="ref-10">Ohno, T. (1991). <em>El sistema de produccion Toyota: mas alla de la produccion a gran escala</em>. Gestion 2000.</li>
+          <li id="ref-11">Akao, Y. (1990). <em>Despliegue de funciones de calidad: integracion de las necesidades del cliente en el diseno del producto</em>. Productivity Press.</li>
+          <li id="ref-12">Goldratt, E. M. y Cox, J. (2005). <em>La meta: un proceso de mejora continua</em>. Diaz de Santos.</li>
+          <li id="ref-13">Gutierrez Pulido, H. (2020). <em>Calidad total y productividad</em> (5.a ed.). McGraw-Hill.</li>
+          <li id="ref-14">Camisón, C., Cruz, S. y Gonzalez, T. (2006). <em>Gestion de la calidad: conceptos, enfoques, modelos y sistemas</em>. Pearson.</li>
+          <li id="ref-15">ISO. (2015). <em>ISO 9000:2015 Sistemas de gestion de la calidad - Fundamentos y vocabulario</em>.</li>
+        </ol>
+        <aside class="source-note">
+          <h3>Fuentes institucionales</h3>
+          <p>Para verificar fechas, premios y denominaciones:</p>
+          <a href="https://deming.org/timeline/" target="_blank" rel="noreferrer">The W. Edwards Deming Institute</a>
+          <a href="https://asq.org/about-asq/honorary-members/shewhart" target="_blank" rel="noreferrer">American Society for Quality: Walter A. Shewhart</a>
+          <a href="https://asq.org/quality-resources/history-of-quality" target="_blank" rel="noreferrer">American Society for Quality: History of Quality</a>
+          <a href="https://asq.org/quality-progress/articles/total-qualitys-leader?id=48e5242580444bcca08b51f0d566f0e6" target="_blank" rel="noreferrer">ASQ: perfil de Armand V. Feigenbaum</a>
+          <p class="small-note">Sugerencia academica: adapta las referencias al formato solicitado por tu docente, por ejemplo APA 7.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer><span>Q/LAB</span><p>Precursores de la calidad · Material de apoyo para Ingenieria Industrial</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
