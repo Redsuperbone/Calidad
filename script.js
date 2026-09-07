@@ -16,7 +16,38 @@ const people = [
 
 let activeId = 'deming';
 let activeFilter = 'Todos';
+const portraits = {};
+const wikipediaTitles = {
+  deming:'W. Edwards Deming', juran:'Joseph M. Juran', crosby:'Philip B. Crosby', ishikawa:'Kaoru Ishikawa',
+  feigenbaum:'Armand V. Feigenbaum', taguchi:'Genichi Taguchi', shewhart:'Walter A. Shewhart', shingo:'Shigeo Shingo',
+  imai:'Masaaki Imai', ohno:'Taiichi Ohno', akao:'Yoji Akao', goldratt:'Eliyahu M. Goldratt', pareto:'Vilfredo Pareto'
+};
 const $ = (selector) => document.querySelector(selector);
+
+function initials(name) {
+  return name.replaceAll('.', '').split(' ').filter(word => word.length > 2).slice(0, 2).map(word => word[0]).join('');
+}
+
+function portrait(person) {
+  const image = portraits[person.id];
+  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy">`;
+  return `<span class="portrait-fallback" aria-label="Retrato no disponible">${initials(person.name)}</span>`;
+}
+
+async function loadPortraits() {
+  const titles = Object.values(wikipediaTitles).join('|');
+  try {
+    const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=480&titles=${encodeURIComponent(titles)}`);
+    const data = await response.json();
+    Object.values(data.query.pages).forEach(page => {
+      const entry = Object.entries(wikipediaTitles).find(([, title]) => title === page.title);
+      if (entry && page.thumbnail?.source) portraits[entry[0]] = page.thumbnail.source;
+    });
+    renderList();
+  } catch (error) {
+    // Initials remain visible when a Wikimedia portrait is unavailable.
+  }
+}
 
 function filteredPeople() {
   const query = $('#search').value.trim().toLowerCase();
@@ -33,7 +64,7 @@ function renderList() {
   if (!visible.some(person => person.id === activeId) && visible.length) activeId = visible[0].id;
   $('#peopleList').innerHTML = visible.length ? visible.map((person, index) => `
     <button class="person-button" type="button" data-id="${person.id}" aria-selected="${person.id === activeId}">
-      <span class="person-index">${String(index + 1).padStart(2, '0')}</span>
+      <span class="person-index">${portraits[person.id] ? portrait(person) : String(index + 1).padStart(2, '0')}</span>
       <span><span class="person-name">${person.name}</span><br><span class="person-era">${person.years}</span></span>
       <span class="person-arrow" aria-hidden="true">→</span>
     </button>`).join('') : '<p class="empty">No se encontraron coincidencias. Prueba otro termino.</p>';
@@ -45,7 +76,7 @@ function renderProfile() {
   const person = people.find(item => item.id === activeId) || people[0];
   const refs = person.refs.map(ref => `<a href="#ref-${ref}">[${ref}]</a>`).join(' ');
   $('#profile').innerHTML = `
-    <div class="profile-top"><div><h3>${person.name}</h3><p class="profile-meta">${person.years} · ${person.country}</p></div><span class="approach">${person.tag}</span></div>
+    <div class="profile-top"><div><h3>${person.name}</h3><p class="profile-meta">${person.years} · ${person.country}</p></div><figure class="portrait">${portrait(person)}<figcaption>Retrato documental</figcaption></figure><span class="approach">${person.tag}</span></div>
     <p class="philosophy">${person.philosophy}</p>
     <div class="profile-grid">
       <section><h4>Principales aportaciones</h4><ul>${person.contributions.map(item => `<li>${item}</li>`).join('')}</ul></section>
@@ -76,3 +107,4 @@ $('#printPage').addEventListener('click', () => window.print());
 renderList();
 renderTimeline();
 renderComparison();
+loadPortraits();
