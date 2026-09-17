@@ -14,28 +14,7 @@ const people = [
   {id:'pareto', name:'Vilfredo Pareto', years:'1848-1923', country:'Italia', stream:'Estrategia', tag:'Priorizacion', philosophy:'Una parte minoritaria de causas suele explicar una parte mayoritaria de los efectos; por ello se debe concentrar el esfuerzo en los pocos vitales.', contributions:['Principio 80/20, aplicado despues por Juran a calidad.','Diagrama de Pareto para jerarquizar problemas.','Base para decidir con recursos limitados y datos de frecuencia.'], recognition:'Su mayor reconocimiento en calidad es el Principio de Pareto, una herramienta universal de priorizacion y analisis gerencial.', refs:[2,13], tool:'Diagrama de Pareto', use:'Priorizacion de defectos, costos y acciones correctivas', year:1896}
 ];
 
-people.push(
-  {id:'taylor', name:'Frederick W. Taylor', years:'1856-1915', country:'Estados Unidos', stream:'Estrategia', tag:'Organizacion cientifica', philosophy:'El trabajo debe estudiarse con metodo para definir la mejor forma conocida de ejecutarlo, estandarizarla y mejorarla con datos.', contributions:['Administracion cientifica y estudio de tiempos.','Estandarizacion de metodos y herramientas.','Separacion analitica de planeacion y ejecucion.'], recognition:'Su legado permanece en la Taylor Medal de ASME y en la ingenieria de metodos. Sus ideas son un antecedente de la estandarizacion en calidad.', refs:[13,14], tool:'Estudio de tiempos / trabajo estandarizado', use:'Diseño de metodos, capacidad y productividad', year:1911},
-  {id:'ford', name:'Henry Ford', years:'1863-1947', country:'Estados Unidos', stream:'Lean', tag:'Produccion en flujo', philosophy:'La calidad y el costo mejoran cuando las piezas son intercambiables, el trabajo se estandariza y el producto se mueve de forma continua.', contributions:['Linea de ensamble movil y produccion en flujo.','Intercambiabilidad y estandarizacion a escala.','Reduccion radical del tiempo de ensamble.'], recognition:'Recibio la Edison Medal (1928). Su planta de Highland Park es un hito de la produccion en flujo y antecedente de Lean.', refs:[10,13], tool:'Flujo continuo / estandarizacion', use:'Balanceo de linea y produccion repetitiva', year:1913},
-  {id:'dodge', name:'Harold F. Dodge', years:'1893-1976', country:'Estados Unidos', stream:'Estadistica', tag:'Muestreo de aceptacion', philosophy:'Las decisiones de aceptacion pueden basarse en una muestra representativa y en riesgos estadisticos conocidos, no en inspeccionar el 100%.', contributions:['Planes de muestreo de aceptacion Dodge-Romig.','Curvas OC y riesgos del productor y consumidor.','Desarrollo de la inspeccion estadistica en Bell Labs.'], recognition:'ASQ lo reconoce como uno de los principales arquitectos del control estadistico de calidad y fue su primer presidente.', refs:[13], tool:'Muestreo de aceptacion / curvas OC', use:'Recepcion de lotes y control de proveedores', year:1930},
-  {id:'romig', name:'Harry G. Romig', years:'1898-1993', country:'Estados Unidos', stream:'Estadistica', tag:'Muestreo industrial', philosophy:'La inspeccion debe proporcionar evidencia estadistica util para decidir, con costos y riesgos controlados.', contributions:['Cocreador de las tablas Dodge-Romig.','Aportes a inspeccion por muestreo en Bell Labs.','Formacion tecnica en control de calidad.'], recognition:'Recibio la Medalla Shewhart de ASQ (1953) y fue nombrado miembro honorario de ASQ en 1982.', refs:[13], tool:'Tablas Dodge-Romig', use:'Inspeccion por lotes y aseguramiento de proveedores', year:1940},
-  {id:'sakichi', name:'Sakichi Toyoda', years:'1867-1930', country:'Japon', stream:'Lean', tag:'Jidoka', philosophy:'Una maquina debe detenerse cuando detecta una anomalia; asi se evita que un defecto avance y se libera a las personas para mejorar el proceso.', contributions:['Principio jidoka o automatizacion con toque humano.','Telares con paro automatico por rotura de hilo.','Base cultural y tecnica del futuro Sistema Toyota.'], recognition:'Conocido como el rey de los inventores japoneses; su legado esta incorporado en los principios fundacionales de Toyota.', refs:[10,13], tool:'Jidoka / paro ante anomalias', use:'Calidad en la fuente y automatizacion', year:1896},
-  {id:'kiichiro', name:'Kiichiro Toyoda', years:'1894-1952', country:'Japon', stream:'Lean', tag:'Just in Time', philosophy:'La produccion debe responder a la demanda real y sincronizar materiales, informacion y operaciones para evitar inventarios innecesarios.', contributions:['Fundador de Toyota Motor Corporation.','Planteamiento inicial del Just in Time.','Impulso a la integracion entre produccion y abastecimiento.'], recognition:'Es reconocido como el fundador de Toyota Motor y precursor directo del sistema que despues consolidaria Taiichi Ohno.', refs:[10,13], tool:'Just in Time', use:'Sincronizacion de abastecimiento y produccion', year:1937},
-  {id:'kano', name:'Noriaki Kano', years:'1940-2022', country:'Japon', stream:'Estrategia', tag:'Satisfaccion del cliente', philosophy:'No todos los atributos impactan igual al cliente: algunos son basicos, otros de desempeno y otros generan entusiasmo.', contributions:['Modelo Kano de atributos de calidad.','Clasificacion de necesidades del cliente.','Enlace entre diseno de producto, satisfaccion y valor.'], recognition:'Recibio la Grant Medal de ASQ en 2006. El modelo Kano es una referencia mundial para innovacion y voz del cliente.', refs:[13,14], tool:'Modelo Kano', use:'Priorizacion de requisitos y desarrollo de productos', year:1984},
-  {id:'shainin', name:'Dorian Shainin', years:'1914-2000', country:'Estados Unidos', stream:'Estadistica', tag:'Reduccion de variacion', philosophy:'Para resolver un problema complejo se debe localizar primero la variable dominante, el Red X, mediante evidencia experimental y comparacion.', contributions:['Sistema Shainin y estrategia Red X.','Herramientas para diagnostico de variacion.','Aportes a diseno de experimentos aplicado.'], recognition:'Recibio la Grant Medal de ASQ en 1981. La ASQ concede la Shainin Medal por metodos innovadores de mejora.', refs:[13], tool:'Red X / sistema Shainin', use:'Solucion de problemas cronicos de manufactura', year:1960},
-  {id:'garvin', name:'David A. Garvin', years:'1952-2017', country:'Estados Unidos', stream:'Total', tag:'Calidad estrategica', philosophy:'La calidad puede observarse desde varias dimensiones y debe convertirse en una fuente de ventaja competitiva, no solo de conformidad.', contributions:['Ocho dimensiones de la calidad.','Enfoques trascendente, basado en producto, usuario, manufactura y valor.','Vinculo entre calidad y estrategia competitiva.'], recognition:'Su marco de ocho dimensiones es una referencia academica y gerencial para evaluar productos y servicios de forma integral.', refs:[13,14], tool:'Ocho dimensiones de calidad', use:'Diseno de indicadores y estrategia de producto', year:1987},
-  {id:'smith', name:'Bill Smith', years:'1929-1993', country:'Estados Unidos', stream:'Estadistica', tag:'Six Sigma', philosophy:'La calidad se mejora al medir defectos con rigor, atacar las causas de variacion y prevenir errores antes de que lleguen al cliente.', contributions:['Cocreador de Six Sigma en Motorola.','Enfoque de defectos por millon de oportunidades.','Impulso de proyectos estructurados de mejora.'], recognition:'Su trabajo en Motorola origino Six Sigma; el programa contribuyo al reconocimiento de Motorola con el Malcolm Baldrige National Quality Award.', refs:[13], tool:'Six Sigma / DPMO', use:'Proyectos de reduccion de defectos y variacion', year:1986},
-  {id:'harry', name:'Mikel Harry', years:'1951-2017', country:'Estados Unidos', stream:'Estadistica', tag:'Six Sigma', philosophy:'La mejora debe conectarse con resultados financieros y seguir una disciplina de proyecto basada en datos, roles y metas medibles.', contributions:['Desarrollo y difusion de Six Sigma.','Estructuracion del enfoque DMAIC.','Formacion de Black Belts y gobernanza de proyectos.'], recognition:'Cofundo la Six Sigma Academy y es reconocido como uno de los principales divulgadores del enfoque a escala global.', refs:[13], tool:'DMAIC / Black Belts', use:'Mejora de procesos con impacto financiero', year:1990},
-  {id:'womack', name:'James P. Womack', years:'1947-', country:'Estados Unidos', stream:'Lean', tag:'Pensamiento Lean', philosophy:'El valor debe definirse desde el cliente y fluir por toda la cadena, eliminando desperdicio de manera sistematica.', contributions:['Popularizo el termino Lean con la investigacion IMVP del MIT.','Cinco principios de Lean Thinking junto con Daniel Jones.','Fundador del Lean Enterprise Institute.'], recognition:'Es ampliamente considerado una figura fundacional del movimiento Lean moderno y fundo el Lean Enterprise Institute en 1997.', refs:[10,14], tool:'Flujo de valor / cinco principios Lean', use:'Mapeo de flujo de valor y transformacion Lean', year:1990},
-  {id:'jones', name:'Daniel T. Jones', years:'1940-2023', country:'Reino Unido', stream:'Lean', tag:'Empresa Lean', philosophy:'Lean es una forma de aprender a crear mas valor con menos recursos mediante flujos de valor de extremo a extremo.', contributions:['Cocreador de Lean Thinking.','Direccion del IMVP con Womack.','Fundador de Lean Enterprise Academy.'], recognition:'Su trabajo con Womack ayudo a llevar Lean desde Toyota a servicios, salud, gobierno y cadenas de suministro.', refs:[10,14], tool:'Empresa Lean / flujo de valor', use:'Transformacion de operaciones y cadena de suministro', year:1996},
-  {id:'roos', name:'Daniel Roos', years:'1941-', country:'Estados Unidos', stream:'Lean', tag:'Produccion Lean', philosophy:'La investigacion comparativa permite entender por que algunos sistemas logran mas calidad y productividad con menores recursos.', contributions:['Codirigio el International Motor Vehicle Program del MIT.','Cocautor de The Machine That Changed the World.','Comparacion global de sistemas de produccion automotriz.'], recognition:'Su investigacion ayudo a documentar y difundir la superioridad operativa de la produccion Lean fuera de Japon.', refs:[10,14], tool:'Benchmarking de sistemas productivos', use:'Diagnostico comparativo de desempeno operacional', year:1990},
-  {id:'krafcik', name:'John Krafcik', years:'1961-', country:'Estados Unidos', stream:'Lean', tag:'Nombre Lean', philosophy:'Un sistema de produccion superior necesita menos esfuerzo, espacio, inventario, tiempo y defectos para generar valor.', contributions:['Acuñó el termino Lean Production en 1988.','Comparo produccion artesanal, en masa y Lean.','Difundio metricas de desempeno de manufactura.'], recognition:'Su concepto Lean Production dio un lenguaje comun al movimiento internacional de manufactura esbelta.', refs:[10,14], tool:'Lean Production', use:'Evaluacion de desperdicio y productividad en planta', year:1988},
-  {id:'liker', name:'Jeffrey K. Liker', years:'1953-', country:'Estados Unidos', stream:'Lean', tag:'Toyota Way', philosophy:'La excelencia sostenible surge de combinar herramientas Lean con una cultura de personas, aprendizaje y solucion cientifica de problemas.', contributions:['Modelo de las 4P del Toyota Way.','Difusion de principios de gestion Toyota.','Conexion entre cultura organizacional y operaciones.'], recognition:'The Toyota Way recibio reconocimiento internacional y ayudo a acercar los principios Toyota a profesionales de todo el mundo.', refs:[10,13], tool:'4P / Toyota Way', use:'Cultura Lean, liderazgo y desarrollo de personas', year:2004},
-  {id:'masing', name:'Walter A. Masing', years:'1915-2004', country:'Alemania', stream:'Total', tag:'Calidad europea', philosophy:'La calidad necesita lenguaje comun, normalizacion y sistemas de gestion que articulen personas, tecnologia y cliente.', contributions:['Impulso a la gestion de calidad en Europa.','Aportes a normalizacion y terminologia de calidad.','Cofundador de la International Academy for Quality.'], recognition:'Fue una figura clave de la calidad europea y cofundador de IAQ junto con Feigenbaum e Ishikawa.', refs:[5,14], tool:'Sistemas de gestion de calidad', use:'Normalizacion, auditoria y gestion organizacional', year:1960},
-  {id:'oakland', name:'John S. Oakland', years:'1943-', country:'Reino Unido', stream:'Total', tag:'TQM operativo', philosophy:'La calidad total debe convertirse en una forma de administrar procesos, equipos y objetivos, usando medicion y mejora continua.', contributions:['Modelo de administracion de calidad total.','Integracion de calidad, excelencia y desempeno.','Difusion de herramientas de TQM en organizaciones.'], recognition:'Sus textos y modelos son referentes de formacion profesional en gestion de la calidad y excelencia operacional.', refs:[13,14], tool:'TQM / gestion por procesos', use:'Sistemas integrados de calidad y desempeno', year:1989}
-);
-
-const essentialIds = new Set(['deming','juran','crosby','ishikawa','feigenbaum','taguchi','shewhart','shingo','imai','ohno','akao','goldratt','pareto','taylor','ford','dodge','sakichi','kiichiro','kano','shainin']);
+const essentialIds = new Set(['deming','juran','crosby','ishikawa','feigenbaum','taguchi','shewhart','shingo','imai','ohno','akao','goldratt','pareto']);
 people.splice(0, people.length, ...people.filter(person => essentialIds.has(person.id)));
 
 let activeId = 'deming';
@@ -48,14 +27,12 @@ const directPortraits = {
   shingo:'https://www.toolshero.com/wp-content/uploads/2018/07/shigeo-shingo-toolshero.jpg',
   ohno:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ohno-Taiichi-1.jpg/1090px-Ohno-Taiichi-1.jpg',
   akao:'https://pic1.zhimg.com/80/v2-85f9c4d9f5b60fca6c52b4f530c5dcda_720w.webp?source=d16d100b',
-  goldratt:'https://www.profiteditorial.com/wp-content/uploads/2024/07/Eliyahu_M_Goldratt-scaled.jpg',
-  dodge:'https://asq.org/-/media/Images/About-ASQ/wcqi/Bios/dodge.gif'
+  goldratt:'https://www.profiteditorial.com/wp-content/uploads/2024/07/Eliyahu_M_Goldratt-scaled.jpg'
 };
 const wikipediaTitles = {
   deming:'W. Edwards Deming', juran:'Joseph M. Juran', crosby:'Philip B. Crosby', ishikawa:'Kaoru Ishikawa',
   feigenbaum:'Armand V. Feigenbaum', taguchi:'Genichi Taguchi', shewhart:'Walter A. Shewhart', shingo:'Shigeo Shingo',
-  imai:'Masaaki Imai', ohno:'Taiichi Ohno', akao:'Yoji Akao', goldratt:'Eliyahu M. Goldratt', pareto:'Vilfredo Pareto',
-  taylor:'Frederick Winslow Taylor', ford:'Henry Ford', dodge:'Harold F. Dodge', romig:'Harry G. Romig', sakichi:'Sakichi Toyoda', kiichiro:'Kiichiro Toyoda', kano:'Noriaki Kano', shainin:'Dorian Shainin', garvin:'David A. Garvin', smith:'Bill Smith (engineer)', harry:'Mikel Harry', womack:'James P. Womack', jones:'Daniel T. Jones', roos:'Daniel Roos', krafcik:'John Krafcik', liker:'Jeffrey Liker', masing:'Walter Masing', oakland:'John S. Oakland'
+  imai:'Masaaki Imai', ohno:'Taiichi Ohno', akao:'Yoji Akao', goldratt:'Eliyahu M. Goldratt', pareto:'Vilfredo Pareto'
 };
 const $ = (selector) => document.querySelector(selector);
 
@@ -162,133 +139,105 @@ function renderComparison() {
   compEl.innerHTML = people.map(person => `<tr><td>${person.name}</td><td>${person.philosophy}</td><td>${person.tool}</td><td>${person.use}</td></tr>`).join('');
 }
 
-const crosswordData = {
-  gridSize: 12,
-  words: [
-    { id: 1, word: 'KAIZEN', row: 1, col: 2, dir: 'H', clue: '1. Filosofía japonesa de mejora continua diaria.' },
-    { id: 2, word: 'DEMING', row: 1, col: 7, dir: 'V', clue: '2. Autor creador del ciclo PDSA y de los 14 puntos de gestión.' },
-    { id: 3, word: 'POKAYOKE', row: 4, col: 3, dir: 'H', clue: '3. Dispositivos a prueba de errores desarrollados por Shingo.' },
-    { id: 4, word: 'JURAN', row: 2, col: 11, dir: 'V', clue: '4. Autor famoso por la Trilogía de calidad y la adecuación al uso.' },
-    { id: 5, word: 'PARETO', row: 8, col: 1, dir: 'H', clue: '5. Principio analítico de los pocos vitales y muchos triviales (80/20).' },
-    { id: 6, word: 'ISHIKAWA', row: 6, col: 5, dir: 'V', clue: '6. Creador del diagrama de espina de pescado y círculos de calidad.' }
-  ]
-};
-
-function initCrossword() {
-  const gridEl = $('#crosswordGrid');
-  const horizList = $('#horizontalClues');
-  const vertList = $('#verticalClues');
-  
-  if (!gridEl) return;
-
-  const size = crosswordData.gridSize;
-  let gridArray = Array.from({ length: size }, () => Array(size).fill(null));
-  
-  crosswordData.words.forEach(item => {
-    let r = item.row - 1;
-    let c = item.col - 1;
-    for (let i = 0; i < item.word.length; i++) {
-      let currR = item.dir === 'H' ? r : r + i;
-      let currC = item.dir === 'H' ? c + i : c;
-      
-      if (!gridArray[currR][currC]) {
-        gridArray[currR][currC] = { letters: [], numbers: [] };
-      }
-      gridArray[currR][currC].letters.push({ wordId: item.id, char: item.word[i], index: i });
-      if (i === 0) {
-        gridArray[currR][currC].numbers.push(item.id);
-      }
-    }
-  });
-
-  let html = '';
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      let cellData = gridArray[r][c];
-      if (cellData) {
-        let numStr = cellData.numbers.length ? `<span class="cw-number">${cellData.numbers.join(',')}</span>` : '';
-        html += `<div class="cw-cell" data-row="${r}" data-col="${c}">
-          ${numStr}
-          <input type="text" maxlength="1" data-letter-info='${JSON.stringify(cellData.letters)}'>
-        </div>`;
-      } else {
-        html += `<div class="cw-cell empty"></div>`;
-      }
-    }
+// Cuestionario Interactivo (Quiz)
+const quizData = [
+  {
+    id: 1,
+    question: "¿Quién es considerado el padre del control estadístico de procesos (SPC) y creador de las cartas de control?",
+    options: ["W. Edwards Deming", "Walter A. Shewhart", "Joseph M. Juran", "Genichi Taguchi"],
+    correct: 1
+  },
+  {
+    id: 2,
+    question: "¿Qué autor popularizó la filosofía de mejora continua diaria conocida como Kaizen?",
+    options: ["Masaaki Imai", "Taiichi Ohno", "Shigeo Shingo", "Kaoru Ishikawa"],
+    correct: 0
+  },
+  {
+    id: 3,
+    question: "¿Cuál es el nombre del diagrama causa-efecto desarrollado por Kaoru Ishikawa?",
+    options: ["Diagrama de Pareto", "Espina de pescado", "Casa de la calidad", "Gráfica de control"],
+    correct: 1
+  },
+  {
+    id: 4,
+    question: "¿Qué principio establece que el 80% de los efectos provienen del 20% de las causas?",
+    options: ["Principio Jidoka", "Principio de Pareto", "Trilogía de Juran", "Cero defectos"],
+    correct: 1
+  },
+  {
+    id: 5,
+    question: "¿Qué autor desarrolló el concepto de dispositivos a prueba de errores (Poka-yoke) y el cambio rápido de herramientas (SMED)?",
+    options: ["Taiichi Ohno", "Shigeo Shingo", "Philip B. Crosby", "Eliyahu M. Goldratt"],
+    correct: 1
   }
-  gridEl.innerHTML = html;
+];
 
-  if (horizList && vertList) {
-    let hHtml = '';
-    let vHtml = '';
-    crosswordData.words.forEach(item => {
-      let li = `<li>${item.clue}</li>`;
-      if (item.dir === 'H') hHtml += li;
-      else vHtml += li;
-    });
-    horizList.innerHTML = hHtml;
-    vertList.innerHTML = vHtml;
-  }
+function initQuiz() {
+  const container = $('#quizContainer');
+  if (!container) return;
 
-  gridEl.querySelectorAll('input').forEach(input => {
-    input.addEventListener('input', (e) => {
-      let val = e.target.value.toUpperCase();
-      e.target.value = val;
-      e.target.classList.remove('correct', 'incorrect');
-      if (val && e.target.parentElement.nextElementSibling) {
-        let nextInput = e.target.parentElement.nextElementSibling.querySelector('input');
-        if (nextInput) nextInput.focus();
-      }
-    });
-  });
+  container.innerHTML = quizData.map((q, qIndex) => `
+    <div class="quiz-card" data-qid="${q.id}">
+      <h3>${qIndex + 1}. ${q.question}</h3>
+      <div class="quiz-options">
+        ${q.options.map((opt, oIndex) => `
+          <label class="quiz-option">
+            <input type="radio" name="q${q.id}" value="${oIndex}">
+            <span>${opt}</span>
+          </label>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
 }
 
-function checkCrosswordAnswers() {
-  let allCorrect = true;
-  let filledCount = 0;
-  
-  $('#crosswordGrid').querySelectorAll('input').forEach(input => {
-    let val = input.value.trim().toUpperCase();
-    if (val) filledCount++;
-    let info = JSON.parse(input.dataset.letterInfo);
-    let matches = info.some(item => item.char === val);
+function checkQuizAnswers() {
+  let score = 0;
+  let answeredCount = 0;
+
+  quizData.forEach(q => {
+    const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+    const optionsContainer = document.querySelector(`.quiz-card[data-qid="${q.id}"]`);
     
-    if (val) {
-      if (matches) {
-        input.classList.add('correct');
-        input.classList.remove('incorrect');
-      } else {
-        input.classList.add('incorrect');
-        input.classList.remove('correct');
-        allCorrect = false;
+    if (selected) {
+      answeredCount++;
+      const val = parseInt(selected.value);
+      const labels = optionsContainer.querySelectorAll('.quiz-option');
+      
+      labels.forEach((label, idx) => {
+        label.classList.remove('correct-ans', 'wrong-ans');
+        if (idx === q.correct) {
+          label.classList.add('correct-ans');
+        } else if (idx === val && val !== q.correct) {
+          label.classList.add('wrong-ans');
+        }
+      });
+
+      if (val === q.correct) {
+        score++;
       }
-    } else {
-      allCorrect = false;
     }
   });
 
-  const feedback = $('#crosswordFeedback');
+  const feedback = $('#quizFeedback');
   if (!feedback) return;
-  if (filledCount === 0) {
-    feedback.textContent = 'Por favor completa algunas letras antes de comprobar.';
+
+  if (answeredCount < quizData.length) {
+    feedback.textContent = `Has respondido ${answeredCount} de ${quizData.length} preguntas. Responde todas para una evaluación completa.`;
     feedback.style.color = 'var(--orange)';
-  } else if (allCorrect) {
-    feedback.textContent = '¡Excelente! ¡Has completado el crucigrama correctamente!';
-    feedback.style.color = 'var(--green)';
   } else {
-    feedback.textContent = 'Hay algunos errores marcados en rojo. ¡Revisa e inténtalo de nuevo!';
-    feedback.style.color = 'var(--orange)';
+    feedback.textContent = `¡Cuestionario calificado! Tu puntaje es ${score} de ${quizData.length}.`;
+    feedback.style.color = score === quizData.length ? 'var(--green)' : 'var(--orange)';
   }
 }
 
-function resetCrosswordBoard() {
-  const grid = $('#crosswordGrid');
-  const feedback = $('#crosswordFeedback');
-  if (grid) {
-    grid.querySelectorAll('input').forEach(input => {
-      input.value = '';
-      input.classList.remove('correct', 'incorrect');
-    });
+function resetQuizBoard() {
+  const container = $('#quizContainer');
+  const feedback = $('#quizFeedback');
+  if (container) {
+    container.querySelectorAll('input').forEach(input => input.checked = false);
+    container.querySelectorAll('.quiz-option').forEach(label => label.classList.remove('correct-ans', 'wrong-ans'));
   }
   if (feedback) feedback.textContent = '';
 }
@@ -310,15 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const printBtn = $('#printPage');
   if (printBtn) printBtn.addEventListener('click', () => window.print());
   
-  const checkBtn = $('#checkCrossword');
-  if (checkBtn) checkBtn.addEventListener('click', checkCrosswordAnswers);
+  const submitQuizBtn = $('#submitQuiz');
+  if (submitQuizBtn) submitQuizBtn.addEventListener('click', checkQuizAnswers);
   
-  const resetBtn = $('#resetCrossword');
-  if (resetBtn) resetBtn.addEventListener('click', resetCrosswordBoard);
+  const resetQuizBtn = $('#resetQuiz');
+  if (resetQuizBtn) resetQuizBtn.addEventListener('click', resetQuizBoard);
 
   renderList();
   renderTimeline();
   renderComparison();
-  initCrossword();
+  initQuiz();
   loadPortraits();
 });

@@ -17,7 +17,7 @@
     <nav aria-label="Navegacion principal">
       <a href="#precursores">Precursores</a>
       <a href="#comparador">Comparador</a>
-      <a href="#crucigrama">Crucigrama</a>
+      <a href="#cuestionario">Cuestionario</a>
       <a href="#bibliografia">Bibliografia</a>
     </nav>
     <button class="print-button" type="button" id="printPage">Imprimir</button>
@@ -100,35 +100,22 @@
       </div>
     </section>
 
-    <section class="crossword-section section-wrap" id="crucigrama" aria-labelledby="crucigrama-title">
+    <section class="quiz-section section-wrap" id="cuestionario" aria-labelledby="quiz-title">
       <div class="section-heading">
         <div>
           <p class="eyebrow">Actividad de repaso</p>
-          <h2 id="crucigrama-title">Crucigrama de calidad</h2>
+          <h2 id="quiz-title">Cuestionario de autoevaluación</h2>
         </div>
-        <p>Pon a prueba tus conocimientos resolviendo conceptos fundamentales de los precursores industriales.</p>
+        <p>Pon a prueba tus conocimientos sobre los precursores y conceptos fundamentales.</p>
       </div>
-      <div class="crossword-container">
-        <div class="crossword-board-wrap">
-          <div id="crosswordGrid" class="crossword-grid" role="grid"></div>
-          <div class="crossword-actions">
-            <button class="cw-btn" type="button" id="checkCrossword">Comprobar respuestas</button>
-            <button class="cw-btn secondary" type="button" id="resetCrossword">Reiniciar</button>
-          </div>
-          <p id="crosswordFeedback" class="cw-feedback" aria-live="polite"></p>
-        </div>
-        <div class="crossword-clues">
-          <h3>Pistas</h3>
-          <div class="clues-group">
-            <h4>Horizontales</h4>
-            <ol id="horizontalClues"></ol>
-          </div>
-          <div class="clues-group">
-            <h4>Verticales</h4>
-            <ol id="verticalClues"></ol>
-          </div>
-        </div>
+      <div class="quiz-container" id="quizContainer">
+        <!-- Preguntas inyectadas por JS -->
       </div>
+      <div class="quiz-actions">
+        <button class="quiz-btn" type="button" id="submitQuiz">Calificar cuestionario</button>
+        <button class="quiz-btn secondary" type="button" id="resetQuiz">Reiniciar</button>
+      </div>
+      <p id="quizFeedback" class="quiz-feedback" aria-live="polite"></p>
     </section>
 
     <section class="takeaway section-wrap" aria-labelledby="takeaway-title">
