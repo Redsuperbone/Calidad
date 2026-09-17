@@ -19,21 +19,21 @@ people.splice(0, people.length, ...people.filter(person => essentialIds.has(pers
 
 let activeId = 'deming';
 let activeFilter = 'Todos';
-const portraits = {};
+
+// Uso de enlaces directos estables y seguros en Wikimedia Commons para evitar bloqueos de CORS o hotlink
 const directPortraits = {
-  crosby:'https://history-biography.com/wp-content/uploads/2018/02/Phil-Crosby.jpg',
-  ishikawa:'https://kkbooks.com/wp-content/uploads/2024/07/Dr.-Kaoru-Ishikawa.png',
-  feigenbaum:'https://nationalmedals.org/wp-content/uploads/2020/07/Armand-V-Feigenbaum-1.jpg',
-  shingo:'https://www.toolshero.com/wp-content/uploads/2018/07/shigeo-shingo-toolshero.jpg',
-  ohno:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ohno-Taiichi-1.jpg/1090px-Ohno-Taiichi-1.jpg',
-  akao:'https://pic1.zhimg.com/80/v2-85f9c4d9f5b60fca6c52b4f530c5dcda_720w.webp?source=d16d100b',
-  goldratt:'https://www.profiteditorial.com/wp-content/uploads/2024/07/Eliyahu_M_Goldratt-scaled.jpg'
+  deming: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/W._Edwards_Deming_%281980%29.jpg/480px-W._Edwards_Deming_%281980%29.jpg',
+  juran: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Joseph_M._Juran_1991.jpg/480px-Joseph_M._Juran_1991.jpg',
+  crosby: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Philip_B._Crosby_%28cropped%29.jpg/480px-Philip_B._Crosby_%28cropped%29.jpg',
+  ishikawa: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kaoru_Ishikawa_1982.jpg/480px-Kaoru_Ishikawa_1982.jpg',
+  feigenbaum: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Armand_Feigenbaum.jpg/480px-Armand_Feigenbaum.jpg',
+  taguchi: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Genichi_Taguchi.jpg/480px-Genichi_Taguchi.jpg',
+  shewhart: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Walter_A._Shewhart.jpg/480px-Walter_A._Shewhart.jpg',
+  shingo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Shigeo_Shingo.jpg/480px-Shigeo_Shingo.jpg',
+  ohno: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ohno-Taiichi-1.jpg/480px-Ohno-Taiichi-1.jpg',
+  pareto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Vilfredo_Pareto_%28fotografia%29.jpg/480px-Vilfredo_Pareto_%28fotografia%29.jpg'
 };
-const wikipediaTitles = {
-  deming:'W. Edwards Deming', juran:'Joseph M. Juran', crosby:'Philip B. Crosby', ishikawa:'Kaoru Ishikawa',
-  feigenbaum:'Armand V. Feigenbaum', taguchi:'Genichi Taguchi', shewhart:'Walter A. Shewhart', shingo:'Shigeo Shingo',
-  imai:'Masaaki Imai', ohno:'Taiichi Ohno', akao:'Yoji Akao', goldratt:'Eliyahu M. Goldratt', pareto:'Vilfredo Pareto'
-};
+
 const $ = (selector) => document.querySelector(selector);
 
 function initials(name) {
@@ -41,22 +41,9 @@ function initials(name) {
 }
 
 function portrait(person) {
-  const image = directPortraits[person.id] || portraits[person.id];
-  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy" referrerpolicy="no-referrer">`;
+  const image = directPortraits[person.id];
+  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy">`;
   return `<span class="portrait-fallback" aria-label="Retrato no disponible">${initials(person.name)}</span>`;
-}
-
-async function loadPortraits() {
-  const titles = people.map(person => wikipediaTitles[person.id]).filter(Boolean).join('|');
-  try {
-    const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=480&titles=${encodeURIComponent(titles)}`);
-    const data = await response.json();
-    Object.values(data.query.pages).forEach(page => {
-      const entry = Object.entries(wikipediaTitles).find(([, title]) => title === page.title);
-      if (entry && page.thumbnail?.source) portraits[entry[0]] = page.thumbnail.source;
-    });
-    renderList();
-  } catch (error) {}
 }
 
 function filteredPeople() {
@@ -80,7 +67,7 @@ function renderList() {
   
   listEl.innerHTML = visible.length ? visible.map((person, index) => `
     <button class="person-button" type="button" data-id="${person.id}" aria-selected="${person.id === activeId}">
-      <span class="person-index">${portraits[person.id] ? portrait(person) : String(index + 1).padStart(2, '0')}</span>
+      <span class="person-index">${portrait(person)}</span>
       <span><span class="person-name">${person.name}</span><br><span class="person-era">${person.years}</span></span>
       <span class="person-arrow" aria-hidden="true">→</span>
     </button>`).join('') : '<p class="empty">No se encontraron coincidencias.</p>';
@@ -128,7 +115,7 @@ function renderTimeline() {
   const timelineEl = $('#timeline');
   if (!timelineEl) return;
   const marks = [
-    ['1924', 'Shewhart propone la carta de control.'], ['1950', 'Deming y Juran impulsan la calidad en Japon.'], ['1951', 'Feigenbaum publica Total Quality Control.'], ['1962', 'Ishikawa consolida los circulos de calidad.'], ['1966', 'Akao inicia el QFD.'], ['1969', 'Shingo desarrolla SMED.'], ['1984', 'Goldratt publica La Meta.']
+    ['1924', 'Shewhart propone la carta de control.'], ['1950', 'Deming y Juran impulsan la calidad en Japón.'], ['1951', 'Feigenbaum publica Total Quality Control.'], ['1962', 'Ishikawa consolida los círculos de calidad.'], ['1966', 'Akao inicia el QFD.'], ['1969', 'Shingo desarrolla SMED.'], ['1984', 'Goldratt publica La Meta.']
   ];
   timelineEl.innerHTML = marks.map(mark => `<article class="time-point"><span class="time-year">${mark[0]}</span><p>${mark[1]}</p></article>`).join('');
 }
@@ -170,6 +157,96 @@ const quizData = [
     question: "¿Qué autor desarrolló el concepto de dispositivos a prueba de errores (Poka-yoke) y el cambio rápido de herramientas (SMED)?",
     options: ["Taiichi Ohno", "Shigeo Shingo", "Philip B. Crosby", "Eliyahu M. Goldratt"],
     correct: 1
+  },
+  {
+    id: 6,
+    question: "¿A quién se le atribuye la formulación de los '14 puntos para la gestión' y el ciclo PDSA?",
+    options: ["W. Edwards Deming", "Joseph M. Juran", "Armand V. Feigenbaum", "Walter A. Shewhart"],
+    correct: 0
+  },
+  {
+    id: 7,
+    question: "¿En qué consiste la 'Trilogía de Juran' para la gestión de la calidad?",
+    options: ["Planificación, control y mejora de la calidad", "Inspección, prueba y entrega", "Diseño, manufactura y servicio", "Prevención, evaluación y fallas"],
+    correct: 0
+  },
+  {
+    id: 8,
+    question: "¿Qué autor introdujo el estándar de desempeño de 'Cero Defectos' y los cuatro absolutos de la calidad?",
+    options: ["Philip B. Crosby", "Genichi Taguchi", "Armand V. Feigenbaum", "W. Edwards Deming"],
+    correct: 0
+  },
+  {
+    id: 9,
+    question: "¿Quién conceptualizó por primera vez el Control Total de la Calidad (TQC) y los costos de calidad (prevención, evaluación y fallas)?",
+    options: ["Armand V. Feigenbaum", "Kaoru Ishikawa", "Joseph M. Juran", "Shigeo Shingo"],
+    correct: 0
+  },
+  {
+    id: 10,
+    question: "¿Qué autor japonés desarrolló la 'Función de Pérdida' y el diseño robusto enfocado en minimizar la desviación respecto al valor objetivo?",
+    options: ["Genichi Taguchi", "Yoji Akao", "Taiichi Ohno", "Masaaki Imai"],
+    correct: 0
+  },
+  {
+    id: 11,
+    question: "¿Quién es reconocido como el arquitecto principal del Sistema de Producción Toyota (TPS) y el enfoque Just in Time?",
+    options: ["Taiichi Ohno", "Shigeo Shingo", "Masaaki Imai", "Kiichiro Toyoda"],
+    correct: 0
+  },
+  {
+    id: 12,
+    question: "¿Quiénes fueron los cocreadores del Despliegue de la Función de Calidad (QFD) y la famosa 'Casa de la Calidad'?",
+    options: ["Yoji Akao y Shigeru Mizuno", "W. Edwards Deming y Joseph Juran", "Taiichi Ohno y Shigeo Shingo", "Kaoru Ishikawa y Genichi Taguchi"],
+    correct: 0
+  },
+  {
+    id: 13,
+    question: "¿Qué autor formuló la Teoría de Restricciones (TOC) a través de su novela gerencial 'La Meta'?",
+    options: ["Eliyahu M. Goldratt", "Vilfredo Pareto", "Philip B. Crosby", "Masaaki Imai"],
+    correct: 0
+  },
+  {
+    id: 14,
+    question: "¿Qué herramienta estadística básica impulsada por Kaoru Ishikawa permite organizar los datos en categorías para identificar frecuencias?",
+    options: ["Histograma / Pareto", "Gráfica de control", "Diagrama de dispersión", "Estratificación"],
+    correct: 0
+  },
+  {
+    id: 15,
+    question: "Según Armand Feigenbaum, ¿qué término describe el desperdicio oculto en la capacidad de la planta debido a la mala calidad?",
+    options: ["Planta oculta", "Muda", "Cuello de botella", "Punto ciego"],
+    correct: 0
+  },
+  {
+    id: 16,
+    question: "¿Qué corriente o enfoque principal agrupa las aportaciones de Taiichi Ohno, Shigeo Shingo y Masaaki Imai?",
+    options: ["Lean / Producción esbelta", "Estadística matemática", "Control Total", "Estrategia corporativa"],
+    correct: 0
+  },
+  {
+    id: 17,
+    question: "¿Cuál es el objetivo principal de la técnica SMED desarrollada por Shigeo Shingo?",
+    options: ["Reducir el tiempo de cambio de herramientas a menos de 10 minutos", "Eliminar por completo la inspección", "Automatizar las líneas de ensamble", "Calcular los costos de no calidad"],
+    correct: 0
+  },
+  {
+    id: 18,
+    question: "¿Qué autor propuso inicialmente el ciclo de especificación, producción e inspección que más tarde evolucionó en el ciclo PDSA?",
+    options: ["Walter A. Shewhart", "W. Edwards Deming", "Joseph M. Juran", "Vilfredo Pareto"],
+    correct: 0
+  },
+  {
+    id: 19,
+    question: "¿Qué concepto define Joseph Juran al señalar que la calidad significa que un producto satisface las necesidades del cliente?",
+    options: ["Adecuación al uso", "Cero defectos", "Calidad robusta", "Valor agregado"],
+    correct: 0
+  },
+  {
+    id: 20,
+    question: "En la Teoría de Restricciones de Eliyahu Goldratt, ¿qué nombre recibe el recurso cuyo rendimiento limita la capacidad de todo el sistema?",
+    options: ["Cuello de botella / Restricción", "Muda", "Causa raíz", "Punto óptimo"],
+    correct: 0
   }
 ];
 
@@ -269,5 +346,4 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimeline();
   renderComparison();
   initQuiz();
-  loadPortraits();
 });
