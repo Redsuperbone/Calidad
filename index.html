@@ -17,9 +17,10 @@
     <nav aria-label="Navegacion principal">
       <a href="#precursores">Precursores</a>
       <a href="#comparador">Comparador</a>
+      <a href="#crucigrama">Crucigrama</a>
       <a href="#bibliografia">Bibliografia</a>
     </nav>
-  
+    <button class="print-button" type="button" id="printPage">Imprimir</button>
   </header>
 
   <main id="contenido">
@@ -99,6 +100,37 @@
       </div>
     </section>
 
+    <section class="crossword-section section-wrap" id="crucigrama" aria-labelledby="crucigrama-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Actividad de repaso</p>
+          <h2 id="crucigrama-title">Crucigrama de calidad</h2>
+        </div>
+        <p>Pon a prueba tus conocimientos resolviendo conceptos fundamentales de los precursores industriales.</p>
+      </div>
+      <div class="crossword-container">
+        <div class="crossword-board-wrap">
+          <div id="crosswordGrid" class="crossword-grid" role="grid"></div>
+          <div class="crossword-actions">
+            <button class="cw-btn" type="button" id="checkCrossword">Comprobar respuestas</button>
+            <button class="cw-btn secondary" type="button" id="resetCrossword">Reiniciar</button>
+          </div>
+          <p id="crosswordFeedback" class="cw-feedback" aria-live="polite"></p>
+        </div>
+        <div class="crossword-clues">
+          <h3>Pistas</h3>
+          <div class="clues-group">
+            <h4>Horizontales</h4>
+            <ol id="horizontalClues"></ol>
+          </div>
+          <div class="clues-group">
+            <h4>Verticales</h4>
+            <ol id="verticalClues"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="takeaway section-wrap" aria-labelledby="takeaway-title">
       <p class="eyebrow">Lectura integradora</p>
       <h2 id="takeaway-title">Cuatro preguntas que ordenan la disciplina</h2>
@@ -116,7 +148,8 @@
           <p class="eyebrow">Para sustentar el trabajo</p>
           <h2 id="bibliography-title">Bibliografia y fuentes</h2>
         </div>
-        </div>
+        <p>Se priorizan ediciones en espanol. Las fuentes institucionales complementan datos biograficos y reconocimientos.</p>
+      </div>
       <div class="sources-grid">
         <ol class="bibliography-list">
           <li id="ref-1">Deming, W. E. (1989). <em>Calidad, productividad y competitividad: la salida de la crisis</em>. Diaz de Santos.</li>
@@ -142,7 +175,8 @@
           <a href="https://asq.org/about-asq/honorary-members/shewhart" target="_blank" rel="noreferrer">American Society for Quality: Walter A. Shewhart</a>
           <a href="https://asq.org/quality-resources/history-of-quality" target="_blank" rel="noreferrer">American Society for Quality: History of Quality</a>
           <a href="https://asq.org/quality-progress/articles/total-qualitys-leader?id=48e5242580444bcca08b51f0d566f0e6" target="_blank" rel="noreferrer">ASQ: perfil de Armand V. Feigenbaum</a>
-         </aside>
+          <p class="small-note">Sugerencia academica: adapta las referencias al formato solicitado por tu docente, por ejemplo APA 7.</p>
+        </aside>
       </div>
     </section>
   </main>
