@@ -20,7 +20,7 @@ people.splice(0, people.length, ...people.filter(person => essentialIds.has(pers
 let activeId = 'deming';
 let activeFilter = 'Todos';
 
-// Uso de enlaces directos estables y seguros en Wikimedia Commons para evitar bloqueos de CORS o hotlink
+// Enlaces directos a imágenes en Wikimedia Commons
 const directPortraits = {
   deming: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/W._Edwards_Deming_%281980%29.jpg/480px-W._Edwards_Deming_%281980%29.jpg',
   juran: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Joseph_M._Juran_1991.jpg/480px-Joseph_M._Juran_1991.jpg',
@@ -30,6 +30,7 @@ const directPortraits = {
   taguchi: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Genichi_Taguchi.jpg/480px-Genichi_Taguchi.jpg',
   shewhart: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Walter_A._Shewhart.jpg/480px-Walter_A._Shewhart.jpg',
   shingo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Shigeo_Shingo.jpg/480px-Shigeo_Shingo.jpg',
+  imai: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Masaaki_Imai.png/480px-Masaaki_Imai.png',
   ohno: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ohno-Taiichi-1.jpg/480px-Ohno-Taiichi-1.jpg',
   pareto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Vilfredo_Pareto_%28fotografia%29.jpg/480px-Vilfredo_Pareto_%28fotografia%29.jpg'
 };
@@ -42,7 +43,7 @@ function initials(name) {
 
 function portrait(person) {
   const image = directPortraits[person.id];
-  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy">`;
+  if (image) return `<img src="${image}" alt="Retrato de ${person.name}" loading="lazy" referrerpolicy="no-referrer">`;
   return `<span class="portrait-fallback" aria-label="Retrato no disponible">${initials(person.name)}</span>`;
 }
 
